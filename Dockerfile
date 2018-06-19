@@ -14,6 +14,10 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+
+RUN composer install --no-dev
+
 EXPOSE 80
 
 CMD ["/sbin/runit-wrapper"]
