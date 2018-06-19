@@ -13,7 +13,14 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.url="https://github.com/pskuza/rss-server"
 
 
-ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV \
+    # When using Composer, disable the warning about running commands as root/super user
+    COMPOSER_ALLOW_SUPERUSER=1 \
+    # Persistent runtime dependencies
+    DEPS="php7.2-pdo"
+
+RUN set -x \
+    && apk add --no-cache $DEPS
 
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY src /var/www/html
