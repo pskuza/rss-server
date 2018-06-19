@@ -7,7 +7,7 @@ use pskuza\rsssserver;
 
 try {
 
-    $rss = new rssserver();
+    $rss = new rssserver\rss();
 
     $dispatcher = FastRoute\cachedDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/', 'getAll');
