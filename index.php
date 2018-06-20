@@ -11,6 +11,8 @@ try {
 
     $dispatcher = FastRoute\cachedDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/', 'getAll');
+        $r->addRoute('GET', '/category/{category}', 'getCategory');
+        $r->addRoute('GET', '/category/{category}', 'getCategory');
     }, [
         'cacheFile' => __DIR__ . '/route.cache'
     ]);
