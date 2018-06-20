@@ -3,11 +3,9 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use pskuza\rssserver;
-
 try {
 
-    $rss = new rssserver\rss("rss.db");
+    $rss = new pskuza\rssserver\rss("rss.db");
 
     $dispatcher = FastRoute\cachedDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/', 'getAll');
