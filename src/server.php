@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace pskuza\rssserver;
+namespace pskuza\rss;
 
-class rss
+class server
 {
     protected $db;
 
