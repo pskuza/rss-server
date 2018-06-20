@@ -26,6 +26,7 @@ COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY src /var/www/html
 COPY index.php /var/www/html
 COPY composer.json /var/www/html
+COPY rss.db /var/www/html
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN composer install -d /var/www/html/ --no-dev

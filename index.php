@@ -7,12 +7,10 @@ use pskuza\rsssserver;
 
 try {
 
-    $rss = new rssserver\rss();
+    $rss = new rssserver\rss("rss.db");
 
     $dispatcher = FastRoute\cachedDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/', 'getAll');
-        $r->addRoute('GET', '/category/{category}', 'getCategory');
-        $r->addRoute('GET', '/category/{category}', 'getCategory');
     }, [
         'cacheFile' => __DIR__ . '/route.cache'
     ]);
@@ -33,11 +31,11 @@ try {
         case FastRoute\Dispatcher::FOUND:
             $class = $routeInfo[1][0];
             $handler = $routeInfo[1][1];
-            $id = (int)array_shift($routeInfo[2]);
+            //$id = array_shift($routeInfo[2]);
             try {
-                $return = $rss->$class->$handler($id);
+                $return = $rss->$class->$handler();
             } catch (\InvalidArgumentException $e) {
-                $rss->error(400);
+                $rss->error(400, 'Invalid Argument');
             }
             if ($return[0] === true) {
                 $rss->success($return[1], $return[2]);
