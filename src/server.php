@@ -11,7 +11,7 @@ class server
     {
         try {
             $this->db = \ParagonIE\EasyDB\Factory::create(
-                'sqlite:host=' . $db
+                'sqlite:' . $db
             );
         } catch (\Exception $e) {
             $this->error(500, 'No database connection.');
