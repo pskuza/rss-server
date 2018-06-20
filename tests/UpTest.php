@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Client;
 
-class RESTTest extends TestCase
+class UpTest extends TestCase
 {
     protected $client;
 
