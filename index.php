@@ -29,11 +29,10 @@ try {
             $rss->error(405, '405');
             break;
         case FastRoute\Dispatcher::FOUND:
-            $class = $routeInfo[1][0];
-            $handler = $routeInfo[1][1];
+            $handler = $routeInfo[1];
             //$id = array_shift($routeInfo[2]);
             try {
-                $return = $rss->$class->$handler();
+                $return = $rss->$handler();
             } catch (\InvalidArgumentException $e) {
                 $rss->error(400, 'Invalid Argument');
             }
@@ -43,7 +42,7 @@ try {
             $rss->error($return[1], $return[2]);
             break;
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     http_response_code(500);
     error_log("Uncatched exception." . $e->getMessage(), 0);
 }

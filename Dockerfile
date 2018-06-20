@@ -32,7 +32,7 @@ COPY rss.db /var/www/html
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN composer install -d /var/www/html/ --no-dev
 
-RUN ls -R /var/www/html
+RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
 
