@@ -28,4 +28,8 @@ class server
         //for now
         die("OK");
     }
+
+    public function getAll() {
+        return;
+    }
 }
