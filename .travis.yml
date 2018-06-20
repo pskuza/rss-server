@@ -10,4 +10,4 @@ install:
 script:
   - phpunit
 after_failure:
-  - docker logs -f rss-server
+  - docker logs rss-server
