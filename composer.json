@@ -25,10 +25,10 @@
   },
   "autoload": {
     "psr-4": {
-      "pskuza\\rss\\": "src"
+      "pskuza\\rss\\": "src/"
     }
   },
   "archive": {
-    "exclude": ["/docker"]
+    "exclude": ["docker", "Dockerfile", "rss.db"]
   }
 }
