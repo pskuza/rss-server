@@ -23,7 +23,7 @@ RUN set -x \
     && apk add --no-cache $DEPS
 
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY src /var/www/html/src
+COPY src/server.php /var/www/html/src/server.php
 COPY index.php /var/www/html
 COPY composer.json /var/www/html
 COPY rss.db /var/www/html
