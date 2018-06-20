@@ -17,7 +17,8 @@ ENV \
     # When using Composer, disable the warning about running commands as root/super user
     COMPOSER_ALLOW_SUPERUSER=1 \
     # Persistent runtime dependencies
-    DEPS="php7.2-pdo"
+    DEPS="php7.2-pdo \
+          php7.2-pdo_sqlite"
 
 RUN set -x \
     && apk add --no-cache $DEPS
