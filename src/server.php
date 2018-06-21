@@ -6,6 +6,7 @@ namespace pskuza\rss;
 class server
 {
     protected $db;
+    public $posts;
 
     public function __construct(string $db)
     {
@@ -16,6 +17,8 @@ class server
         } catch (\Exception $e) {
             $this->error(500, 'No database connection.');
         }
+
+        $this->posts = new posts($this->db);
     }
 
     public function error(int $http_code, string $error_message) {
@@ -24,12 +27,9 @@ class server
         die($error_message);
     }
 
-    public function success() {
+    public function success(int $http_code = 200, string $message) {
         //for now
-        die("OK");
-    }
-
-    public function getAll() {
-        return;
+        http_response_code($http_code);
+        die($message);
     }
 }

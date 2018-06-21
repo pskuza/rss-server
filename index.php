@@ -10,7 +10,7 @@ try {
     $rss = new server("rss.db");
 
     $dispatcher = FastRoute\cachedDispatcher(function(FastRoute\RouteCollector $r) {
-        $r->addRoute('GET', '/', 'getAll');
+        $r->addRoute('GET', '/', ['posts', 'getAll']);
     }, [
         'cacheFile' => __DIR__ . '/route.cache'
     ]);
@@ -29,10 +29,11 @@ try {
             $rss->error(405, '405');
             break;
         case FastRoute\Dispatcher::FOUND:
-            $handler = $routeInfo[1];
-            //$id = array_shift($routeInfo[2]);
+            $class = $routeInfo[1][0];
+            $handler = $routeInfo[1][1];
+            $options = (array) $routeInfo[2];
             try {
-                $return = $rss->$handler();
+                $return = $api->$class->$handler($options);
             } catch (\InvalidArgumentException $e) {
                 $rss->error(400, 'Invalid Argument');
             }
