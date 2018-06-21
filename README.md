@@ -6,7 +6,7 @@
 
 
 * Sqlite3 database. (https://github.com/paragonie/easydb) 
-* File based cache. (https://github.com/doctrine/cache)
+* Memory based cache. (https://github.com/doctrine/cache)
 
 ## Install
 

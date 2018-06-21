@@ -2,10 +2,12 @@
 declare(strict_types=1);
 
 namespace pskuza\rss;
+use Doctrine\Common\Cache\ApcuCache;
 
 class server
 {
     protected $db;
+    protected $cache;
     public $posts;
 
     public function __construct(string $db)
@@ -18,7 +20,13 @@ class server
             $this->error(500, 'No database connection.');
         }
 
-        $this->posts = new posts($this->db);
+        try {
+            $this->cache = new ApcuCache();
+        } catch (\Exception $e) {
+            $this->error(500, 'Could not create cache.');
+        }
+
+        $this->posts = new posts($this->db, $this->cache);
     }
 
     public function error(int $http_code, string $error_message) {

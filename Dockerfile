@@ -18,7 +18,8 @@ ENV \
     COMPOSER_ALLOW_SUPERUSER=1 \
     # Persistent runtime dependencies
     DEPS="php7.2-pdo \
-          php7.2-pdo_sqlite"
+          php7.2-pdo_sqlite \
+          php7.2-apcu"
 
 RUN set -x \
     && apk add --no-cache $DEPS
