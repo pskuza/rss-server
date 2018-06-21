@@ -25,6 +25,7 @@ RUN set -x \
 
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY src/server.php /var/www/html/src/server.php
+COPY src/posts.php /var/www/html/src/posts.php
 COPY index.php /var/www/html
 COPY composer.json /var/www/html
 COPY rss.db /var/www/html
