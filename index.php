@@ -33,7 +33,7 @@ try {
             $handler = $routeInfo[1][1];
             $options = (array) $routeInfo[2];
             try {
-                $return = $api->$class->$handler($options);
+                $return = $rss->$class->$handler($options);
             } catch (\InvalidArgumentException $e) {
                 $rss->error(400, 'Invalid Argument');
             }
