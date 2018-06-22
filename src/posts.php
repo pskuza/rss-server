@@ -24,7 +24,7 @@ class posts
 
     public function addPost(): array
     {
-        $date = new DateTime();
+        $date = new \DateTime();
 
         $data = $this->json_decode();
 
