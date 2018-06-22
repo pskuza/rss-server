@@ -24,17 +24,21 @@ ENV \
 RUN set -x \
     && apk add --no-cache $DEPS
 
+RUN mkdir /config
+
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY src/server.php /var/www/html/src/server.php
 COPY src/posts.php /var/www/html/src/posts.php
 COPY index.php /var/www/html
 COPY composer.json /var/www/html
-COPY rss.db /var/www/html
+COPY docker/rss-server/rss.db /config/rss.db
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 RUN COMPOSER_CACHE_DIR=/dev/null composer install -d /var/www/html/ --no-dev
 
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html && chown -R www-data:www-data /config
+
+VOLUME /config
 
 EXPOSE 80
 
