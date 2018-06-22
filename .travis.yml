@@ -4,7 +4,7 @@ php:
 services:
     - docker
 before_install:
-    - pecl install apcu
+    - phpenv config-add apcu.ini
 install:
     - docker build -t rss-server .
     - docker run -d -p 127.0.0.1:80:80 --name rss-server rss-server
