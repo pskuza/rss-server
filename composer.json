@@ -32,6 +32,6 @@
     }
   },
   "archive": {
-    "exclude": ["docker", "Dockerfile", "rss.db"]
+    "exclude": ["docker", "Dockerfile"]
   }
 }

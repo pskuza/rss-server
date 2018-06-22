@@ -4,10 +4,12 @@ php:
 services:
     - docker
 install:
-    - composer install
     - docker build -t rss-server .
     - docker run -d -p 127.0.0.1:80:80 --name rss-server rss-server
+before_script:
+  - phpenv config-rm xdebug.ini
 script:
+  - composer install
   - phpunit
 after_failure:
   - docker logs rss-server
