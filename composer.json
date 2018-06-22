@@ -21,7 +21,7 @@
     "ext-apcu": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "7.2.4",
+    "phpunit/phpunit": "7.2.6",
     "guzzlehttp/guzzle": "6.3.3",
     "codedungeon/phpunit-result-printer": "0.19.10",
     "sllh/composer-versions-check": "2.0.3"

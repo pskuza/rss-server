@@ -13,3 +13,5 @@
 ``` sh
 docker pull pskuza/rss-server
 ```
+
+Not yet ready.

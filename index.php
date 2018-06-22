@@ -10,7 +10,9 @@ try {
     $rss = new server("rss.db");
 
     $dispatcher = FastRoute\cachedDispatcher(function(FastRoute\RouteCollector $r) {
-        $r->addRoute('GET', '/', ['posts', 'getAll']);
+        $r->addRoute('GET', '/', ['posts', 'getAllPosts']);
+        $r->addRoute('POST', '/add', ['posts', 'addPost']);
+        $r->addRoute('POST', '/edit/{id:\d+}', ['posts', 'editPost']);
     }, [
         'cacheFile' => __DIR__ . '/route.cache'
     ]);
