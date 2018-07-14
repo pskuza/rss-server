@@ -1,13 +1,15 @@
 <?php
 declare(strict_types=1);
 
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 use pskuza\rss\server;
 
 try {
 
-    $rss = new server("/config/rss.db");
+    $rss = new server("/var/www/html/database/rss.db");
 
     $dispatcher = FastRoute\cachedDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/', ['posts', 'getAllPosts']);
@@ -37,7 +39,7 @@ try {
             try {
                 $return = $rss->$class->$handler($options);
             } catch (\InvalidArgumentException $e) {
-                $rss->error(400, 'Invalid Argument');
+                $rss->error(400, 'Invalid Argument: ' . $e->getMessage());
             }
             if ($return[0] === true) {
                 $rss->success($return[1], $return[2]);

@@ -13,17 +13,16 @@
     }
   ],
   "require": {
-    "php": "^7.1",
-    "doctrine/cache": "1.7.1",
+    "php": "^7",
+    "doctrine/cache": "1.6.2",
     "paragonie/easydb": "2.6.2",
     "nikic/fast-route": "1.3.0",
     "webmozart/assert": "1.3.0",
     "ext-apcu": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "7.2.6",
+    "phpunit/phpunit": "6.5.9",
     "guzzlehttp/guzzle": "6.3.3",
-    "codedungeon/phpunit-result-printer": "0.19.10",
     "sllh/composer-versions-check": "2.0.3"
   },
   "autoload": {

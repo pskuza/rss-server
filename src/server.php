@@ -17,13 +17,13 @@ class server
                 'sqlite:' . $db
             );
         } catch (\Exception $e) {
-            $this->error(500, 'No database connection.');
+            $this->error(501, 'No database connection.');
         }
 
         try {
             $this->cache = new ApcuCache();
         } catch (\Exception $e) {
-            $this->error(500, 'Could not create cache.');
+            $this->error(502, 'Could not create cache.');
         }
 
         $this->posts = new posts($this->db, $this->cache);
