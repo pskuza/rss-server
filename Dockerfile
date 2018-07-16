@@ -1,4 +1,4 @@
-FROM phpearth/php:7.2-nginx
+FROM phpearth/php:7.1-nginx
 
 ARG BUILD_DATE
 ARG VCS_REF
