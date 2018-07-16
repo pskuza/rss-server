@@ -1,2 +1,4 @@
 #!/bin/sh
-cp -n /var/www/html/rss.db /data/rss.db || true
+if [ ! -f /data/rss.db ]; then
+    cp /var/www/html/rss.db /data/rss.db
+fi # TODO: check if database format changed and upgrade it

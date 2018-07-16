@@ -37,6 +37,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 RUN COMPOSER_CACHE_DIR=/dev/null composer install -d /var/www/html/ --no-dev
 
 RUN chown -R www-data /var/www/html
+RUN mkdir /data
+RUN chown -R www-data /data
 
 EXPOSE 80
 
