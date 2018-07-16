@@ -31,6 +31,7 @@ class server
 
     public function error(int $http_code, string $error_message) {
         http_response_code($http_code);
+        error_log($error_message, 0);
         die($error_message);
     }
 

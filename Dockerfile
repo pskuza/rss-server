@@ -29,6 +29,8 @@ COPY docker/ /
 COPY src/server.php /var/www/html/src/server.php
 COPY src/posts.php /var/www/html/src/posts.php
 COPY index.php /var/www/html
+RUN sed -i 's#\$rss.*#\$rss = new server("/data/rss.db");#' /var/www/html/index.php
+COPY rss.db /var/www/html
 COPY composer.json /var/www/html
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
@@ -37,5 +39,7 @@ RUN COMPOSER_CACHE_DIR=/dev/null composer install -d /var/www/html/ --no-dev
 RUN chown -R www-data /var/www/html
 
 EXPOSE 80
+
+VOLUME /data
 
 CMD ["/sbin/runit-wrapper"]

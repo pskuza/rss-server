@@ -46,4 +46,11 @@ class RSSTest extends TestCase
 
         $this->assertEquals(400, $r->getStatusCode());
     }
+
+    public function testGetPost()
+    {
+        $r = $this->client->request('GET', '/');
+
+        $this->assertEquals(200, $r->getStatusCode());
+    }
 }

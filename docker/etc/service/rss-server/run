@@ -1,0 +1,2 @@
+#!/bin/sh
+cp -n /var/www/html/rss.db /data/rss.db || true

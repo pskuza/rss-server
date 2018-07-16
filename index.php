@@ -9,7 +9,7 @@ use pskuza\rss\server;
 
 try {
 
-    $rss = new server("/var/www/html/database/rss.db");
+    $rss = new server("rss.db");
 
     $dispatcher = FastRoute\cachedDispatcher(function(FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/', ['posts', 'getAllPosts']);
